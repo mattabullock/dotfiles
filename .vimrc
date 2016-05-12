@@ -16,7 +16,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'szw/vim-tags'
+Plugin 'easytags.vim'
+Bundle 'xolox/vim-misc'
 Bundle 'ervandew/supertab'
 Bundle 'shawncplus/phpcomplete.vim'
 
@@ -66,13 +67,21 @@ set completeopt=longest,menuone
 let mapleader = ","
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" easytags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:easytags_cmd = '/usr/local/bin/ctags'
+set tags=./tags;
+let g:easytags_dynamic_files = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-nnoremap <c-l> :CtrlPLine<cr>
+nnoremap <leader>l :CtrlPLine<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
