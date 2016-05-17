@@ -22,7 +22,6 @@ Plugin 'scrooloose/nerdTree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
-Plugin 'Valloric/YouCompleteMe'
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
 
