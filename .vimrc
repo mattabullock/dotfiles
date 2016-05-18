@@ -115,6 +115,7 @@ let g:easytags_cmd = '/usr/local/bin/ctags'
 set tags=./tags;
 let g:easytags_dynamic_files = 2
 let g:easytags_async = 1
+let g:easytags_opts = ['--options=$HOME/.ctags.cnf']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP
@@ -143,6 +144,14 @@ let g:airline_powerline_fonts = 1
 "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vdebug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vdebug_options = {}
+let g:vdebug_options["path_maps"] = {
+\    "/vagrant/Server-Scraper" : $HOME."/Expensidev/Server-Scraper",
+\    "/vagrant/config/www/switch" : $HOME."/Expensidev/Server-Scraper"
+\}
+
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move around splits with <c-hjkl>

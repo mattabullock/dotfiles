@@ -1,0 +1,5 @@
+--exclude=.git
+--exclude=vendor
+--exclude=lib/zeta
+--exclude=lib/Zend
+--exclude=node_modules
