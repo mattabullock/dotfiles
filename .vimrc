@@ -24,6 +24,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
+Bundle 'joonty/vim-phpunitqf.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -118,6 +119,10 @@ let g:easytags_async = 1
 let g:easytags_opts = ['--options=$HOME/.ctags.cnf']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" phpunit
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:phpunit_cmd = "/usr/local/bin/phpunit"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 'ra'
@@ -164,7 +169,8 @@ nnoremap <c-n> :NERDTreeToggle<cr>
 
 nnoremap <leader>f :FixWhitespace<cr>
 
-" Highlight whitespace
+" Map capital W to lowercase because shift and things
+nnoremap :W :w
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
