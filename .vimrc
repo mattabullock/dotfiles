@@ -17,14 +17,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'delimitMate.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'easytags.vim'
+" Plugin 'easytags.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
-Bundle 'joonty/vdebug'
+Plugin 'phpqa'
+" Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
-Bundle 'joonty/vim-phpunitqf.git'
+" Bundle 'joonty/vim-phpunitqf.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,7 +40,7 @@ augroup myvimrc
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autocomplete settings
+" Autocomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
@@ -141,13 +142,6 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
-"" :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-"set statusline=%<%f\                     " Filename
-"set statusline+=%w%h%m%r                 " Options
-"" set statusline+=%{fugitive#statusline()} " Git Hotness
-"set statusline+=\ [%{&ff}/%Y]            " Filetype
-"" set statusline+=\ [%{getcwd()}]          " Current dir
-"set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vdebug
@@ -157,6 +151,12 @@ let g:vdebug_options["path_maps"] = {
 \    "/vagrant/Server-Scraper" : $HOME."/Expensidev/Server-Scraper",
 \    "/vagrant/config/www/switch" : $HOME."/Expensidev/Server-Scraper"
 \}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PHPQA
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:phpqa_codesniffer_autorun = 0
+let g:phpqa_messdetector_autorun = 0
 
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -170,10 +170,10 @@ nnoremap <c-n> :NERDTreeToggle<cr>
 nnoremap <leader>f :FixWhitespace<cr>
 
 " Map capital W to lowercase because shift and things
-nnoremap :W :w
+nnoremap :W<cr> :w<cr>
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabDefaultCompletionType = ""
 
 " Prevent entering ex mode
 nnoremap Q <Nop>
