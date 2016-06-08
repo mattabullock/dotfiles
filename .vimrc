@@ -23,7 +23,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
 Plugin 'phpqa'
-" Bundle 'joonty/vdebug'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
 " Bundle 'joonty/vim-phpunitqf.git'
 
@@ -149,8 +150,11 @@ let g:airline_powerline_fonts = 1
 let g:vdebug_options = {}
 let g:vdebug_options["path_maps"] = {
 \    "/vagrant/Server-Scraper" : $HOME."/Expensidev/Server-Scraper",
-\    "/vagrant/config/www/switch" : $HOME."/Expensidev/Server-Scraper"
+\    "/vagrant/Web-Expensify" : $HOME."/Expensidev/Web-Expensify",
+\    "/vagrant/config/www/switch/_beforeSwitch.php" : $HOME."/Expensidev/Web-Expensify/_before.php",
+\    "/vagrant/config/www/switch/_afterSwitch.php" : $HOME."/Expensidev/Web-Expensify/_after.php"
 \}
+let g:break_on_open = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA

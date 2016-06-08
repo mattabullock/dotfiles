@@ -3,3 +3,4 @@
 --exclude=lib/zeta
 --exclude=lib/Zend
 --exclude=node_modules
+--exclude=*.html
