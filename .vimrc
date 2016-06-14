@@ -166,6 +166,7 @@ nnoremap <leader>e :VdebugEval
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_messdetector_autorun = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move around splits with <c-hjkl>
