@@ -154,7 +154,10 @@ let g:vdebug_options["path_maps"] = {
 \    "/vagrant/config/www/switch/_beforeSwitch.php" : $HOME."/Expensidev/Web-Expensify/_before.php",
 \    "/vagrant/config/www/switch/_afterSwitch.php" : $HOME."/Expensidev/Web-Expensify/_after.php"
 \}
+let g:vdebug_options['timeout'] = 60
 let g:break_on_open = 0
+
+nnoremap <leader>e :VdebugEval
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
