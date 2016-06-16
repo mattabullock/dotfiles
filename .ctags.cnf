@@ -4,3 +4,5 @@
 --exclude=lib/Zend
 --exclude=node_modules
 --exclude=*.html
+--exclude=externalLib
+--exclude=build

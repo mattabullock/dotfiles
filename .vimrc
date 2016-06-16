@@ -17,13 +17,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'delimitMate.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-" Plugin 'easytags.vim'
+Plugin 'easytags.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
 Plugin 'phpqa'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
@@ -137,6 +138,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|.git\|vendor\|zeta\|Zend\|externalLib
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>l :CtrlPLine<cr>
 nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <C-]> :CtrlPtjump<cr>
+let g:ctrlp_tjump_only_silent = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
