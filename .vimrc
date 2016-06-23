@@ -28,7 +28,7 @@ Plugin 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
-" Bundle 'joonty/vim-phpunitqf.git'
+Bundle 'joonty/vim-phpunitqf.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -112,6 +112,7 @@ set completeopt=longest,menuone
 set backspace=indent,eol,start
 
 let mapleader = ","
+set pastetoggle=<leader>p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " easytags
@@ -126,6 +127,7 @@ let g:easytags_opts = ['--options=$HOME/.ctags.cnf']
 " phpunit
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:phpunit_cmd = "/usr/local/bin/phpunit"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,7 +162,7 @@ let g:vdebug_options["path_maps"] = {
 \    "/vagrant/config/www/switch/_afterSwitch.php" : $HOME."/Expensidev/Web-Expensify/_after.php"
 \}
 let g:vdebug_options['timeout'] = 60
-let g:break_on_open = 0
+let g:vdebug_options['break_on_open'] = 0
 
 nnoremap <leader>e :VdebugEval
 
@@ -170,6 +172,10 @@ nnoremap <leader>e :VdebugEval
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_messdetector_autorun = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fugitive
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
