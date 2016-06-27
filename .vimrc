@@ -25,6 +25,10 @@ Plugin 'fugitive.vim'
 Plugin 'phpqa'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'shawncplus/phpcomplete.vim'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
@@ -46,6 +50,24 @@ augroup END
 " Autocomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:phpcomplete_parse_docblock_comments = 1
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplete#enable_auto_select = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme and Syntax highlighting
