@@ -14,9 +14,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'shaond/vim-guru'
 Plugin 'delimitMate.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'easytags.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'vim-airline/vim-airline'
