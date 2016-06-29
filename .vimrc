@@ -186,7 +186,7 @@ let g:vdebug_options["path_maps"] = {
 let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
-nnoremap <leader>e :VdebugEval
+nnoremap <leader>e :VdebugEval 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
@@ -212,6 +212,7 @@ nnoremap <leader>f :FixWhitespace<cr>
 
 " Map capital W to lowercase because shift and things
 nnoremap :W<cr> :w<cr>
+nnoremap :Q<cr> :q<cr>
 
 " SuperTab
 " let g:SuperTabDefaultCompletionType = ""
