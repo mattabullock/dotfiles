@@ -9,27 +9,37 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'shaond/vim-guru'
-Plugin 'delimitMate.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'easytags.vim'
-Plugin 'scrooloose/nerdTree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'fugitive.vim'
-Plugin 'phpqa'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'ivalkeen/vim-ctrlp-tjump'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'VundleVim/Vundle.vim' " Vim plugin manager
+
+" Making Vim pretty
+Plugin 'shaond/vim-guru' " color scheme
+Plugin 'vim-airline/vim-airline' " better status line
+Plugin 'vim-airline/vim-airline-themes' " themes for status line
+
+" Easy project navigation
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy search
+Plugin 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
+Plugin 'scrooloose/nerdTree' " file explorer
+Plugin 'easytags.vim' " creates tags for easy jumping
+
+" Making editing great again!
+Plugin 'delimitMate.vim' " adds matching parens, quotes, etc
+Plugin 'fugitive.vim' " git
+Plugin 'scrooloose/nerdcommenter' " easy commenting
+Plugin 'mbbill/undotree' " undo tree viewer
+Plugin 'justinmk/vim-sneak' " moving around with s<char><char>
 Bundle 'christoomey/vim-tmux-navigator'
+
+" Universal autocomplete
+Plugin 'Shougo/neocomplete.vim' " code completion
+Plugin 'Shougo/neosnippet' " snippets!
+Plugin 'Shougo/neosnippet-snippets' " snippets in your snippets!
+
+" PHP specific
+Plugin 'shawncplus/phpcomplete.vim' " php specific code completion
+Plugin 'phpqa' " php linting
 Bundle 'joonty/vdebug'
 Bundle 'xolox/vim-misc'
 Bundle 'joonty/vim-phpunitqf.git'
@@ -198,6 +208,16 @@ let g:phpqa_messdetector_autorun = 0
 " fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>gb :Gblame<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" undotree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>u :UndotreeToggle<cr>
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
