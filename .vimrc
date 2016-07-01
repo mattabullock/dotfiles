@@ -25,11 +25,13 @@ Plugin 'scrooloose/nerdTree' " file explorer
 Plugin 'easytags.vim' " creates tags for easy jumping
 
 " Making editing great again!
+Plugin 'tpope/vim-surround' " surround words with things
 Plugin 'delimitMate.vim' " adds matching parens, quotes, etc
 Plugin 'fugitive.vim' " git
 Plugin 'scrooloose/nerdcommenter' " easy commenting
 Plugin 'mbbill/undotree' " undo tree viewer
 Plugin 'justinmk/vim-sneak' " moving around with s<char><char>
+Plugin 'terryma/vim-multiple-cursors' " add multiple cursor support
 Bundle 'christoomey/vim-tmux-navigator'
 
 " Universal autocomplete
@@ -78,6 +80,20 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:neocomplete#enable_auto_select = 1
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme and Syntax highlighting
@@ -196,7 +212,7 @@ let g:vdebug_options["path_maps"] = {
 let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
-nnoremap <leader>e :VdebugEval 
+nnoremap <leader>e :VdebugEval
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
@@ -226,7 +242,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-nnoremap <c-n> :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 nnoremap <leader>f :FixWhitespace<cr>
 
