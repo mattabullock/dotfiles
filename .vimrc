@@ -212,7 +212,7 @@ let g:vdebug_options["path_maps"] = {
 let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
-nnoremap <leader>e :VdebugEval
+nnoremap <leader>e :VdebugEval<space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
@@ -233,6 +233,17 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ag
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
