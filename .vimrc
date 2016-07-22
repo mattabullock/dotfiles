@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " Vim plugin manager
 
 " Making Vim pretty
-Plugin 'shaond/vim-guru' " color scheme
+Plugin 'altercation/vim-colors-solarized' " color scheme
 Plugin 'vim-airline/vim-airline' " better status line
 Plugin 'vim-airline/vim-airline-themes' " themes for status line
 
@@ -128,7 +128,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
-colorscheme gurunew
+set background=dark
+colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -196,7 +197,7 @@ let g:ctrlp_tjump_only_silent = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
-let g:airline_theme='molokai'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,6 +247,13 @@ command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" delimitMate
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let delimitMate_excluded_regions = "Comment"
+let delimitMate_expand_cr = 1
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move around splits with <c-hjkl>
@@ -256,6 +264,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 nnoremap <leader>f :FixWhitespace<cr>
+nnoremap <leader>y "+y
 
 " Map capital W to lowercase because shift and things
 nnoremap :W<cr> :w<cr>
