@@ -214,6 +214,7 @@ let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
 nnoremap <leader>e :VdebugEval<space>
+nnoremap <leader>bw :BreakpointWindow<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
