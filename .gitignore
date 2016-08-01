@@ -5,3 +5,5 @@
 !.gitignore
 !.ctags.cnf
 !.tmux.conf
+!.zshrc
+!.zsh_aliases

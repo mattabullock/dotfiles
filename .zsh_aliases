@@ -1,0 +1,10 @@
+alias tmux='tmux -2'
+alias nas='ssh nas@n.as'
+alias lnas='ssh nas@ln.as'
+
+alias synctun='ssh -L 9999:localhost:8888 nas@n.as'
+alias rttun='ssh -L 9999:localhost:9997 nas@n.as'
+alias gltun='ssh -L 9999:localhost:9898 nas@n.as'
+alias ndtun='ssh -L 9999:localhost:19999 nas@n.as'
+
+alias tmd="tmux new-session -d 'vim' && tmux split-window -v -p 18 && tmux attach-session -d"
