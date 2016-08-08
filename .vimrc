@@ -226,6 +226,7 @@ let g:phpqa_messdetector_autorun = 0
 " fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gh :Gbrowse<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " undotree
@@ -298,6 +299,7 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 
 nnoremap <leader>f :FixWhitespace<cr>
 nnoremap <leader>y "+y
+vnoremap <leader>y "+y<cr>
 
 " Map capital W to lowercase because shift and things
 nnoremap :W<cr> :w<cr>
