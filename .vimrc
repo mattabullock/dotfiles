@@ -3,52 +3,52 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VUNDLE
+" vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim' " Vim plugin manager
+Plug 'VundleVim/Vundle.vim' " Vim plugin manager
 
 " Making Vim pretty
-Plugin 'altercation/vim-colors-solarized' " color scheme
-Plugin 'vim-airline/vim-airline' " better status line
-Plugin 'vim-airline/vim-airline-themes' " themes for status line
+Plug 'altercation/vim-colors-solarized' " color scheme
+Plug 'vim-airline/vim-airline' " better status line
+Plug 'vim-airline/vim-airline-themes' " themes for status line
 
 " Easy project navigation
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy search
-Plugin 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
-Plugin 'scrooloose/nerdTree' " file explorer
-Plugin 'easytags.vim' " creates tags for easy jumping
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
+Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
+Plug 'scrooloose/nerdTree' " file explorer
+Plug 'xolox/vim-misc'
+Plug 'easytags.vim' " creates tags for easy jumping
 
 " Making editing great again!
-Plugin 'tpope/vim-surround' " surround words with things
-Plugin 'delimitMate.vim' " adds matching parens, quotes, etc
-Plugin 'fugitive.vim' " git
-Plugin 'scrooloose/nerdcommenter' " easy commenting
-Plugin 'mbbill/undotree' " undo tree viewer
-Plugin 'justinmk/vim-sneak' " moving around with s<char><char>
-Plugin 'terryma/vim-multiple-cursors' " add multiple cursor support
-Bundle 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-surround' " surround words with things
+Plug 'delimitMate.vim' " adds matching parens, quotes, etc
+Plug 'fugitive.vim' " git
+Plug 'scrooloose/nerdcommenter' " easy commenting
+Plug 'mbbill/undotree' " undo tree viewer
+Plug 'justinmk/vim-sneak' " moving around with s<char><char>
+Plug 'terryma/vim-multiple-cursors' " add multiple cursor support
+Plug 'christoomey/vim-tmux-navigator'
 
 " Universal autocomplete
-Plugin 'Shougo/neocomplete.vim' " code completion
-Plugin 'Shougo/neosnippet' " snippets!
-Plugin 'Shougo/neosnippet-snippets' " snippets in your snippets!
+Plug 'Shougo/neocomplete.vim' " code completion
+Plug 'Shougo/neosnippet' " snippets!
+Plug 'Shougo/neosnippet-snippets' " snippets in your snippets!
 
 " PHP specific
-Plugin 'shawncplus/phpcomplete.vim' " php specific code completion
-Plugin 'phpqa' " php linting
-Bundle 'joonty/vdebug'
-Bundle 'xolox/vim-misc'
-Bundle 'joonty/vim-phpunitqf.git'
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+Plug 'phpqa', { 'for': 'php' }
+Plug 'joonty/vdebug', { 'for': 'php' }
+Plug 'joonty/vim-phpunitqf', { 'for': 'php' }
+
+" Golang specific
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()            " required
+filetype plugin indent on  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto-reload .vimrc
@@ -183,11 +183,10 @@ let g:phpunit_cmd = "/usr/local/bin/phpunit"
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+let g:ctrlp_extensions = ['buffertag', 'tag']
 let g:ctrlp_custom_ignore = 'node_modules\|.git\|vendor\|zeta\|Zend\|externalLib\|build'
 "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>l :CtrlPLine<cr>
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <C-]> :CtrlPtjump<cr>
 let g:ctrlp_tjump_only_silent = 1
@@ -213,8 +212,8 @@ let g:vdebug_options["path_maps"] = {
 let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
-nnoremap <leader>e :VdebugEval<space>
-nnoremap <leader>bw :BreakpointWindow<cr>
+au FileType php nnoremap <leader>e :VdebugEval<space>
+au FileType php nnoremap <leader>bw :BreakpointWindow<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHPQA
