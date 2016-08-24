@@ -83,5 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f .zsh_aliases ] && source .zsh_aliases
+[ -f .zsh_nas_aliases ] && source .zsh_nas_aliases
 [ -f .zsh_work ] && source .zsh_work
 [ -f .zsh_work_aliases ] && source .zsh_work_aliases
