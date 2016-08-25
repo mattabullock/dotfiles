@@ -71,7 +71,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:phpcomplete_parse_docblock_comments = 1
-let g:neocomplcache_disable_auto_complete = 1
+
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -171,7 +171,6 @@ let g:easytags_cmd = '/usr/local/bin/ctags'
 set tags=./tags;
 let g:easytags_dynamic_files = 2
 let g:easytags_async = 1
-let g:easytags_opts = ['--options=$HOME/.ctags.cnf']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " phpunit
