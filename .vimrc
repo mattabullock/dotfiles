@@ -20,12 +20,13 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
 Plug 'scrooloose/nerdTree' " file explorer
 Plug 'xolox/vim-misc'
-Plug 'easytags.vim' " creates tags for easy jumping
+Plug 'xolox/vim-easytags' " creates tags for easy jumping
+Plug 'majutsushi/tagbar'
 
 " Making editing great again!
 Plug 'tpope/vim-surround' " surround words with things
-Plug 'delimitMate.vim' " adds matching parens, quotes, etc
-Plug 'fugitive.vim' " git
+Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
+Plug 'tpope/vim-fugitive' " git
 Plug 'scrooloose/nerdcommenter' " easy commenting
 Plug 'mbbill/undotree' " undo tree viewer
 Plug 'justinmk/vim-sneak' " moving around with s<char><char>
@@ -34,12 +35,12 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Universal autocomplete
 Plug 'Shougo/neocomplete.vim' " code completion
-Plug 'Shougo/neosnippet' " snippets!
-Plug 'Shougo/neosnippet-snippets' " snippets in your snippets!
+"Plug 'Shougo/neosnippet' " snippets!
+"Plug 'Shougo/neosnippet-snippets' " snippets in your snippets!
 
 " PHP specific
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-Plug 'phpqa', { 'for': 'php' }
+Plug 'joonty/vim-phpqa', { 'for': 'php' }
 Plug 'joonty/vdebug', { 'for': 'php' }
 Plug 'joonty/vim-phpunitqf', { 'for': 'php' }
 
@@ -70,6 +71,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:phpcomplete_parse_docblock_comments = 1
+let g:neocomplcache_disable_auto_complete = 1
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -140,7 +142,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
@@ -222,7 +223,16 @@ let g:phpqa_messdetector_autorun = 0
 " fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gh :Gbrowse<cr>
+function! Gbrowsebyline(setting) range
+    if a:setting == "single"
+        execute ":".line('.')."Gbrowse"
+    elseif a:setting == "multiple"
+        execute ":'<,'>Gbrowse"
+    endif
+endfunction
+nnoremap <leader>gh :call Gbrowsebyline("single")<cr>
+vnoremap <leader>gh :call Gbrowsebyline("multiple")<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " undotree
@@ -297,6 +307,11 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>tb :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
