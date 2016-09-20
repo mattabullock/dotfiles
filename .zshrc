@@ -82,7 +82,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f .zsh_aliases ] && source .zsh_aliases
-[ -f .zsh_nas_aliases ] && source .zsh_nas_aliases
-[ -f .zsh_work ] && source .zsh_work
-[ -f .zsh_work_aliases ] && source .zsh_work_aliases
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+[ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
+[ -f $HOME/.zsh_nas_aliases ] && source $HOME/.zsh_nas_aliases
+[ -f $HOME/.zsh_work ] && source $HOME/.zsh_work
+[ -f $HOME/.zsh_work_aliases ] && source $HOME/.zsh_work_aliases
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -20,7 +20,7 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
 Plug 'scrooloose/nerdTree' " file explorer
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags' " creates tags for easy jumping
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " Making editing great again!
@@ -165,14 +165,6 @@ let mapleader = ","
 set pastetoggle=<leader>p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" easytags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:easytags_cmd = '/usr/local/bin/ctags'
-set tags=./tags;
-let g:easytags_dynamic_files = 2
-let g:easytags_async = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " phpunit
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:phpunit_cmd = "/usr/local/bin/phpunit"
@@ -203,6 +195,7 @@ let g:vdebug_options = {}
 let g:vdebug_options["path_maps"] = {
 \    "/vagrant/Server-Scraper" : $HOME."/Expensidev/Server-Scraper",
 \    "/vagrant/Web-Expensify" : $HOME."/Expensidev/Web-Expensify",
+\    "/vagrant/Web-Secure" : $HOME."/Expensidev/Web-Secure",
 \    "/vagrant/config/www/switch/_beforeSwitch.php" : $HOME."/Expensidev/Web-Expensify/_before.php",
 \    "/vagrant/config/www/switch/_afterSwitch.php" : $HOME."/Expensidev/Web-Expensify/_after.php"
 \}
@@ -335,6 +328,17 @@ nnoremap :Q<cr> :q<cr>
 
 " Prevent entering ex mode
 nnoremap Q <Nop>
+
+" Visual Paste doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")

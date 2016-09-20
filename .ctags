@@ -7,3 +7,5 @@
 --exclude=*.html
 --exclude=externalLib
 --exclude=build
+--exclude=*.o
+--exclude=*.d
