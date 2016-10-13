@@ -21,7 +21,6 @@ Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
 Plug 'scrooloose/nerdTree' " file explorer
 Plug 'xolox/vim-misc'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
 
 " Making editing great again!
 Plug 'tpope/vim-surround' " surround words with things
@@ -46,6 +45,10 @@ Plug 'joonty/vim-phpunitqf', { 'for': 'php' }
 
 " Golang specific
 Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Markdown specific
+Plug 'godlygeek/tabular', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -301,9 +304,9 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tagbar
+" vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>tb :TagbarToggle<CR>
+let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
