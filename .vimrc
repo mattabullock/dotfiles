@@ -27,10 +27,7 @@ Plug 'tpope/vim-surround' " surround words with things
 Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'tpope/vim-fugitive' " git
 Plug 'scrooloose/nerdcommenter' " easy commenting
-Plug 'mbbill/undotree' " undo tree viewer
 Plug 'justinmk/vim-sneak' " moving around with s<char><char>
-Plug 'terryma/vim-multiple-cursors' " add multiple cursor support
-Plug 'christoomey/vim-tmux-navigator'
 
 " Universal autocomplete
 Plug 'Shougo/neocomplete.vim' " code completion
@@ -49,6 +46,11 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Markdown specific
 Plug 'godlygeek/tabular', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+" Disabled Plugins
+" Plug 'mbbill/undotree'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
