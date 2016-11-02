@@ -12,8 +12,7 @@ Plug 'VundleVim/Vundle.vim' " Vim plugin manager
 
 " Making Vim pretty
 Plug 'altercation/vim-colors-solarized' " color scheme
-Plug 'vim-airline/vim-airline' " better status line
-Plug 'vim-airline/vim-airline-themes' " themes for status line
+Plug 'itchyny/lightline.vim'
 
 " Easy project navigation
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
@@ -55,9 +54,9 @@ filetype plugin indent on  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto-reload .vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup reload_vimrc
+    autocmd!
+    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -184,10 +183,17 @@ let g:ctrlp_tjump_only_silent = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
-let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
+let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline.component = {
+            \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+            \   'lineinfo': '%3l/%L:%-2v'
+            \ }
+let g:lightline.active = {
+            \   'left': [ [ 'mode', 'paste' ], ['fugitive'], ['readonly', 'relativepath', 'modified'] ],
+            \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \ }
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vdebug
