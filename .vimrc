@@ -21,6 +21,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
 Plug 'scrooloose/nerdTree' " file explorer
 Plug 'xolox/vim-misc'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Making editing great again!
 Plug 'tpope/vim-surround' " surround words with things
@@ -46,11 +47,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Markdown specific
 Plug 'godlygeek/tabular', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
-" Disabled Plugins
-" Plug 'mbbill/undotree'
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
