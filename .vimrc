@@ -30,9 +30,7 @@ Plug 'scrooloose/nerdcommenter' " easy commenting
 Plug 'justinmk/vim-sneak' " moving around with s<char><char>
 
 " Universal autocomplete
-Plug 'Shougo/neocomplete.vim' " code completion
-"Plug 'Shougo/neosnippet' " snippets!
-"Plug 'Shougo/neosnippet-snippets' " snippets in your snippets!
+Plug 'Valloric/YouCompleteMe'
 
 " PHP specific
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
@@ -63,39 +61,6 @@ augroup END
 " Autocomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neocomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:phpcomplete_parse_docblock_comments = 1
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:neocomplete#enable_auto_select = 1
-
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme and Syntax highlighting
@@ -194,7 +159,6 @@ let g:lightline.active = {
             \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ }
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vdebug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,16 +195,6 @@ function! Gbrowsebyline(setting) range
 endfunction
 nnoremap <leader>gh :call Gbrowsebyline("single")<cr>
 vnoremap <leader>gh :call Gbrowsebyline("multiple")<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" undotree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>u :UndotreeToggle<cr>
-if has("persistent_undo")
-    set undodir=~/.undodir/
-    set undofile
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ag
@@ -311,6 +265,11 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 " vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_confirm_extra_conf = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
