@@ -8,3 +8,8 @@
 !.zshrc
 !.zsh_aliases
 !prompt_matt_setup
+!.zpreztorc
+!.zlogin
+!.zlogout
+!.zprofile
+!.zshenv
