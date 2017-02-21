@@ -1,5 +1,5 @@
 # install zsh and prezto
-sudo apt-get install zsh
+sudo apt -y install zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 zsh -c "~/dotfiles/setup_zsh.sh"
@@ -14,7 +14,7 @@ git clone https://github.com/vim/vim.git
 cd vim/src
 make install
 
-sudo apt-get install ctags
+sudo apt -y install ctags
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
