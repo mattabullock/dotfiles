@@ -2,9 +2,7 @@
 sudo apt -y install zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-zsh -c "~/dotfiles/setup_zsh.sh"
-
-sudo chsh -s /bin/zsh --user nas
+sudo chsh -s /bin/zsh nas
 
 mv ~/dotfiles/* ~/
 mv prompt_matt_setup ~/.zprezto/modules/prompt/functions/
