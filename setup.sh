@@ -4,6 +4,8 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 
 zsh -c "~/dotfiles/setup_zsh.sh"
 
+sudo chsh -s /bin/zsh --user nas
+
 mv ~/dotfiles/* ~/
 mv prompt_matt_setup ~/.zprezto/modules/prompt/functions/
 
