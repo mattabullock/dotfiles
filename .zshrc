@@ -5,9 +5,9 @@ fi
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/go/bin"
+export PATH=$PATH:/usr/local/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 export GOPATH=$HOME/projects/golang
-export PATH=$PATH:$GOPATH/bin
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
