@@ -7,9 +7,6 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plug 'VundleVim/Vundle.vim' " Vim plugin manager
-
 " Making Vim pretty
 Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'itchyny/lightline.vim'
