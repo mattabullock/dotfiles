@@ -137,7 +137,6 @@ let g:phpunit_cmd = "/usr/local/bin/phpunit"
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_extensions = ['buffertag', 'tag']
 let g:ctrlp_custom_ignore = 'node_modules\|.git\|vendor\|zeta\|Zend\|externalLib\|build'
 nnoremap <C-]> :CtrlPtjump<cr>
 let g:ctrlp_tjump_only_silent = 1
