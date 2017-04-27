@@ -14,8 +14,6 @@ Plug 'itchyny/lightline.vim'
 " Easy project navigation
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
-Plug 'scrooloose/nerdTree' " file explorer
-Plug 'xolox/vim-misc'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -24,14 +22,14 @@ Plug 'tpope/vim-surround' " surround words with things
 Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'tpope/vim-fugitive' " git
 Plug 'scrooloose/nerdcommenter' " easy commenting
-Plug 'justinmk/vim-sneak' " moving around with s<char><char>
+Plug 'tpope/vim-rhubarb' " GitHub commands
 
 " Universal autocomplete
 Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
 
 " PHP specific
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-Plug 'joonty/vim-phpqa', { 'for': 'php' }
 Plug 'joonty/vdebug', { 'for': 'php' }
 Plug 'joonty/vim-phpunitqf', { 'for': 'php' }
 
@@ -106,14 +104,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
 set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden         " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -305,7 +299,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-nnoremap <leader>n :NERDTreeToggle<cr>
 
 nnoremap <leader>f :FixWhitespace<cr>
 nnoremap <leader>y "+y
@@ -314,9 +307,6 @@ vnoremap <leader>y "+y<cr>
 " Map capital W to lowercase because shift and things
 nnoremap :W<cr> :w<cr>
 nnoremap :Q<cr> :q<cr>
-
-" SuperTab
-" let g:SuperTabDefaultCompletionType = ""
 
 " Prevent entering ex mode
 nnoremap Q <Nop>
