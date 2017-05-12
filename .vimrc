@@ -26,12 +26,12 @@ Plug 'tpope/vim-rhubarb' " GitHub commands
 
 " Universal autocomplete
 Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'for': 'php' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " PHP specific
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'joonty/vdebug', { 'for': 'php' }
-Plug 'joonty/vim-phpunitqf', { 'for': 'php' }
 
 " Golang specific
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -51,11 +51,6 @@ augroup reload_vimrc
     autocmd!
     autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autocomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme and Syntax highlighting
@@ -90,7 +85,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
@@ -260,6 +255,13 @@ let g:vim_markdown_folding_disabled = 1
 " YouCompleteMe
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_confirm_extra_conf = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<C-x>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Session handling
