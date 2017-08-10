@@ -1,14 +1,5 @@
-# install zsh and prezto
-sudo apt -y install zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-sudo chsh -s /bin/zsh nas
-
 mv ~/dotfiles/.* ~/
 mv ~/dotfiles/* ~/
-mv prompt_matt_setup ~/.zprezto/modules/prompt/functions/
-
-curl -fLo ~/.zprezto/modules/git/alias.zsh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/plugins/git/git.plugin.zsh
 
 sudo apt install ncurses-dev python-dev cmake
 
@@ -27,4 +18,3 @@ vim +PlugInstall +qall
 
 cd ~/.vim/plugged/YouCompleteMe
 ./install.py --clang-completer --gocode-completer
-
