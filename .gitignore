@@ -7,5 +7,6 @@
 !.tmux.conf
 !.bash_aliases
 !.bash_git_aliases
+!.inputrc
 !setup.sh
 !.ssh/
