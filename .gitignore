@@ -5,6 +5,8 @@
 !.gitignore
 !.ctags
 !.tmux.conf
+!.bashrc
+!.bash_profile
 !.bash_aliases
 !.bash_git_aliases
 !.inputrc
