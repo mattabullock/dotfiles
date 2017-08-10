@@ -5,14 +5,7 @@
 !.gitignore
 !.ctags
 !.tmux.conf
-!.zshrc
-!.zsh_aliases
-!prompt_matt_setup
-!.zpreztorc
-!.zlogin
-!.zlogout
-!.zprofile
-!.zshenv
+!.bash_aliases
+!.bash_git_aliases
 !setup.sh
-!setup_zsh.sh
 !.ssh/
