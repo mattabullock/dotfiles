@@ -9,6 +9,7 @@
 !.bash_profile
 !.bash_aliases
 !.bash_git_aliases
+!.git-completion.bash
 !.inputrc
 !setup.sh
 !.ssh/
