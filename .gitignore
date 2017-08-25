@@ -10,6 +10,7 @@
 !.bash_aliases
 !.bash_git_aliases
 !.git-completion.bash
+!.gitconfig
 !.inputrc
 !setup.sh
 !.ssh/

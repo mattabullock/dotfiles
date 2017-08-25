@@ -1,0 +1,14 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[difftool]
+	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[mergetool]
+	cmd = vimdiff
+    conflictstyle = diff3
+    prompt = false
+[user]
+	name = Matt Bullock
+	email = mattabullock@gmail.com
+[push]
+	default = current
