@@ -4,10 +4,12 @@ if [ -f $HOME/.git-completion.bash ]; then
     # Add git completion to aliases
     __git_complete gco _git_checkout
     __git_complete gbd _git_branch
+    __git_complete gb _git_branch
 fi
 
 alias ga='git add'
 alias gap='git add --patch'
+alias gb='git branch'
 alias gbd='git branch -d'
 alias gcl='git clone --recursive'
 alias gcb='git checkout -b'

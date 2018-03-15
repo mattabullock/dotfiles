@@ -19,16 +19,20 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Making editing great again!
 Plug 'tpope/vim-surround' " surround words with things
-Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'tpope/vim-fugitive' " git
-Plug 'scrooloose/nerdcommenter' " easy commenting
 Plug 'tpope/vim-rhubarb' " GitHub commands
+Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
+Plug 'scrooloose/nerdcommenter' " easy commenting
 
 " Universal autocomplete
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale', { 'for': 'php' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
+
+" CPP Specific
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " PHP specific
 Plug 'joonty/vdebug', { 'for': 'php' }
@@ -37,7 +41,6 @@ Plug 'joonty/vdebug', { 'for': 'php' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Markdown specific
-Plug 'godlygeek/tabular', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " All of your Plugins must be added before the following line
@@ -323,6 +326,8 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+com! FormatJSON %!python -m json.tool
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
