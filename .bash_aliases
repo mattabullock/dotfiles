@@ -4,7 +4,11 @@ alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
 alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 
-alias grep='grep --color'
+if [ -x "$(command -v ag)" ]; then
+    alias grep='ag'
+else
+    alias grep='grep --color -i'
+fi
 
 alias tmux='tmux -2'
 alias nas='ssh nas@n.as'
