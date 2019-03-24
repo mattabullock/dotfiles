@@ -19,8 +19,8 @@ Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'itchyny/lightline.vim'
 
 " Easy project navigation
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy search
-Plug 'ivalkeen/vim-ctrlp-tjump' " nicer jump to definition
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -55,14 +55,6 @@ call plug#end()            " required
 filetype plugin indent on  " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto-reload .vimrc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup reload_vimrc
-    autocmd!
-    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
-augroup END
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme and Syntax highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -95,7 +87,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
@@ -131,14 +123,9 @@ set pastetoggle=<leader>p
 let g:phpunit_cmd = "/usr/local/bin/phpunit"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRLP
+" fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = 'node_modules\|.git\|vendor\|zeta\|Zend\|externalLib\|build'
-nnoremap <C-]> :CtrlPtjump<cr>
-let g:ctrlp_tjump_only_silent = 1
+nnoremap <C-p> :FZF<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -192,15 +179,13 @@ nnoremap <leader>gh :call Gbrowsebyline("single")<cr>
 vnoremap <leader>gh :call Gbrowsebyline("multiple")<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ag
+" rg
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+if executable('rg')
+  " Use rg over grep
+  set grepprg=rg\ --vimgrep
 endif
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+nnoremap \ :Rg<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delimitMate

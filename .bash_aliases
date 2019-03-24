@@ -4,8 +4,8 @@ alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
 alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 
-if [ -x "$(command -v ag)" ]; then
-    alias grep='ag'
+if [ -x "$(command -v rg)" ]; then
+    alias grep='rg'
 else
     alias grep='grep --color -i'
 fi
