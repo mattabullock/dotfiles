@@ -87,7 +87,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
-set background=dark
+set background=light
 colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when

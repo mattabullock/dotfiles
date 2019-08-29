@@ -25,6 +25,8 @@ fi
 export HISTCONTROL=ignoredups:ignorespace
 export EDITOR='vim'
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # added by travis gem
 [ -f /Users/mattbullock/.travis/travis.sh ] && source /Users/mattbullock/.travis/travis.sh
 
@@ -79,3 +81,6 @@ function color_my_prompt {
     export PS1="$virtualenv[\[\e[36m\]\u@\h\[\e[m\] \[\e[00m\]\w\[\e[m\]] $open_paren$branch_color$git_branch$close_paren $last_color"
 }
 PROMPT_COMMAND=color_my_prompt
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
