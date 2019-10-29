@@ -25,6 +25,8 @@ fi
 export HISTCONTROL=ignoredups:ignorespace
 export EDITOR='vim'
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # added by travis gem
 [ -f /Users/mattbullock/.travis/travis.sh ] && source /Users/mattbullock/.travis/travis.sh
 
