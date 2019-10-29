@@ -11,3 +11,4 @@
 --exclude=build
 --exclude=*.o
 --exclude=*.d
+--exclude=Android/assets

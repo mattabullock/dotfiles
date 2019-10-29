@@ -79,3 +79,5 @@ function color_my_prompt {
     export PS1="$virtualenv[\[\e[36m\]\u@\h\[\e[m\] \[\e[00m\]\w\[\e[m\]] $open_paren$branch_color$git_branch$close_paren $last_color"
 }
 PROMPT_COMMAND=color_my_prompt
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

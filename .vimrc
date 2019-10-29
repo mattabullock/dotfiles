@@ -32,11 +32,11 @@ Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'scrooloose/nerdcommenter' " easy commenting
 
 " Universal autocomplete
-Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale', { 'for': 'php' }
+"Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
 
 " CPP Specific
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -87,7 +87,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
-set background=dark
+set background=light
 colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
@@ -126,6 +126,7 @@ let g:phpunit_cmd = "/usr/local/bin/phpunit"
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-p> :FZF<cr>
+nnoremap <C-]> :call fzf#vim#tags(expand('<cword>'))<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -249,7 +250,21 @@ let g:vim_markdown_folding_disabled = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_confirm_extra_conf = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ale
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = {
+\   'cpp': ['gcc'],
+\   'php': ['php']
+\}
+let g:ale_fixers = {
+\   'cpp': ['uncrustify'],
+\}
+let g:ale_cpp_gcc_options = "-x c++ -I/Users/mattbullock/Expensidev/Server-Expensify -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock/mbedtls/include -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock/test/lib/ -I/Users/mattbullock/Expensidev/Server-Expensify/externalLib/liboauthcpp/include -I/usr/local/Cellar/pcre/8.40/include -I/usr/include -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
+let g:ale_c_uncrustify_options = "-c ~/Expensidev/Server-Expensify/ci/uncrustify_config.txt -l CPP"
+let g:ale_fix_on_save = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
