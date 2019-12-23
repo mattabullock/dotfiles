@@ -34,8 +34,8 @@ Plug 'scrooloose/nerdcommenter' " easy commenting
 " Universal autocomplete
 "Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
 
 " CPP Specific
@@ -125,7 +125,7 @@ let g:phpunit_cmd = "/usr/local/bin/phpunit"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-p> :FZF<cr>
+nnoremap <C-p> :GFiles<cr>
 nnoremap <C-]> :call fzf#vim#tags(expand('<cword>'))<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -262,7 +262,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'cpp': ['uncrustify'],
 \}
-let g:ale_cpp_gcc_options = "-x c++ -I/Users/mattbullock/Expensidev/Server-Expensify -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock/mbedtls/include -I/Users/mattbullock/Expensidev/Server-Expensify/../Bedrock/test/lib/ -I/Users/mattbullock/Expensidev/Server-Expensify/externalLib/liboauthcpp/include -I/usr/local/Cellar/pcre/8.40/include -I/usr/include -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
+let g:ale_cpp_gcc_options = "-x c++ -I/Users/mbullock/Expensidev/Server-Expensify -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock/mbedtls/include -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock/test/lib/ -I/Users/mbullock/Expensidev/Server-Expensify/externalLib/liboauthcpp/include -I/usr/local/Cellar/pcre/8.43/include -I/usr/include -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
 let g:ale_c_uncrustify_options = "-c ~/Expensidev/Server-Expensify/ci/uncrustify_config.txt -l CPP"
 let g:ale_fix_on_save = 1
 
