@@ -19,7 +19,7 @@ Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'itchyny/lightline.vim'
 
 " Easy project navigation
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && sudo ln -s ~./fzf/bin/fzf /usr/local/bin/fzf' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && sudo ln -sf ~./fzf/bin/fzf /usr/local/bin/fzf' }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
@@ -27,13 +27,14 @@ Plug 'christoomey/vim-tmux-navigator'
 " Making editing great again!
 Plug 'tpope/vim-surround' " surround words with things
 Plug 'tpope/vim-fugitive' " git
+Plug 'shumphrey/fugitive-gitlab.vim' " GitLab commands
 Plug 'tpope/vim-rhubarb' " GitHub commands
 Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'scrooloose/nerdcommenter' " easy commenting
 
 " Universal autocomplete
 "Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
@@ -41,14 +42,15 @@ Plug 'w0rp/ale'
 " CPP Specific
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-" PHP specific
-Plug 'joonty/vdebug', { 'for': 'php' }
-
 " Golang specific
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Markdown specific
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+" Python specific
+Plug 'psf/black', { 'branch': 'main', 'for': 'python' }
+Plug 'joonty/vdebug', { 'for': 'python' }
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -122,6 +124,12 @@ set pastetoggle=<leader>p
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:phpunit_cmd = "/usr/local/bin/phpunit"
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gutentags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_ctags_extra_args = ["--options=/Users/mattbullock/.ctags"]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,13 +154,7 @@ let g:lightline.active = {
 " Vdebug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vdebug_options = {}
-let g:vdebug_options["path_maps"] = {
-\    "/vagrant/Server-Scraper" : $HOME."/Expensidev/Server-Scraper",
-\    "/vagrant/Web-Expensify" : $HOME."/Expensidev/Web-Expensify",
-\    "/vagrant/Web-Secure" : $HOME."/Expensidev/Web-Secure",
-\    "/vagrant/config/www/switch/_beforeSwitch.php" : $HOME."/Expensidev/Web-Expensify/_before.php",
-\    "/vagrant/config/www/switch/_afterSwitch.php" : $HOME."/Expensidev/Web-Expensify/_after.php"
-\}
+let g:vdebug_options["path_maps"] = { }
 let g:vdebug_options['timeout'] = 60
 let g:vdebug_options['break_on_open'] = 0
 
@@ -168,16 +170,18 @@ let g:phpqa_messdetector_autorun = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gb :Git blame<cr>
 function! Gbrowsebyline(setting) range
     if a:setting == "single"
-        execute ":".line('.')."Gbrowse"
+        execute ":".line('.')."GBrowse"
     elseif a:setting == "multiple"
-        execute ":'<,'>Gbrowse"
+        execute ":'<,'>GBrowse"
     endif
 endfunction
 nnoremap <leader>gh :call Gbrowsebyline("single")<cr>
 vnoremap <leader>gh :call Gbrowsebyline("multiple")<cr>
+
+let g:fugitive_gitlab_domains = ['https://my.gitlab.com']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rg
@@ -186,6 +190,8 @@ if executable('rg')
   " Use rg over grep
   set grepprg=rg\ --vimgrep
 endif
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep("rg --column --line-number --no-heading --hidden --color=always --smart-case --glob '!.git' -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 nnoremap \ :Rg<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -248,23 +254,22 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe
+" black
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:ycm_confirm_extra_conf = 0
+autocmd BufWritePre *.py execute ':Black'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
 \   'cpp': ['gcc'],
-\   'php': ['php']
+\   'php': ['php'],
 \}
-let g:ale_fixers = {
-\   'cpp': ['uncrustify'],
-\}
-let g:ale_cpp_gcc_options = "-x c++ -I/Users/mbullock/Expensidev/Server-Expensify -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock/mbedtls/include -I/Users/mbullock/Expensidev/Server-Expensify/../Bedrock/test/lib/ -I/Users/mbullock/Expensidev/Server-Expensify/externalLib/liboauthcpp/include -I/usr/local/Cellar/pcre/8.43/include -I/usr/include -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
-let g:ale_c_uncrustify_options = "-c ~/Expensidev/Server-Expensify/ci/uncrustify_config.txt -l CPP"
+let g:ale_cpp_gcc_options = "-x c++ -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
 let g:ale_fix_on_save = 1
+
+let g:ale_python_auto_poetry = 1
+let g:ale_python_flake8_options = "--ignore E501"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
@@ -341,3 +346,4 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+au BufRead,BufNewFile *.mustache setfiletype python
