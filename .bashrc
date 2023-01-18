@@ -1,27 +1,19 @@
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/MacGPG2/bin:$PATH"
 export PATH="/opt/X11/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/opt/dirmngr/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin:~/.rbenv/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.local/bin"
 
-export GOPATH=$HOME/projects/golang
 
-# use Ctrl-Z to fg (still does bg on vim)
-stty susp undef
-bind -x '"\C-z": "fg"'
-
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+#export GPG_TTY="$(tty)"
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
 
 export HISTCONTROL=ignoredups:ignorespace
 export EDITOR='vim'
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-# added by travis gem
-[ -f /Users/mattbullock/.travis/travis.sh ] && source /Users/mattbullock/.travis/travis.sh
 
 [ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 [ -f $HOME/.bash_nas_aliases ] && source $HOME/.bash_nas_aliases
@@ -75,4 +67,5 @@ function color_my_prompt {
 }
 PROMPT_COMMAND=color_my_prompt
 
+# fzf config
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
