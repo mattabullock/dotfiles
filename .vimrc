@@ -221,7 +221,7 @@ let g:ale_linters = {
 \   'python': ['ruff', 'mypy']
 \}
 let g:ale_fixers = {
-\   '*': ['trim_whitespace', 'remove_trailing_lines']
+\   '*': ['trim_whitespace', 'remove_trailing_lines'],
 \   'python': ['ruff', 'ruff_format'],
 \}
 let g:ale_python_mypy_auto_pipenv = 1
