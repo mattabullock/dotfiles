@@ -19,7 +19,7 @@ Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'itchyny/lightline.vim'
 
 " Easy project navigation
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && sudo ln -s ./bin/fzf /usr/local/bin/fzf' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
