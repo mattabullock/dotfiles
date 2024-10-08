@@ -112,7 +112,7 @@ let g:gutentags_ctags_extra_args = ["--options=".$HOME."/.ctags"]
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-p> :GFiles<cr>
-nnoremap <C-]> :call fzf#vim#tags(expand('<cword>'))<cr>
+nnoremap <C-]> :execute 'Tags' expand('<cword>')<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
