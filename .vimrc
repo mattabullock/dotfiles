@@ -19,7 +19,7 @@ Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'itchyny/lightline.vim'
 
 " Easy project navigation
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && sudo ln -sf ~./fzf/bin/fzf /usr/local/bin/fzf' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && sudo ln -s ./bin/fzf /usr/local/bin/fzf' }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
@@ -33,11 +33,7 @@ Plug 'Raimondi/delimitMate' " adds matching parens, quotes, etc
 Plug 'scrooloose/nerdcommenter' " easy commenting
 
 " Universal autocomplete
-"Plug 'Valloric/YouCompleteMe'
 Plug 'dense-analysis/ale'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'cpp' }
 
 " CPP Specific
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -48,10 +44,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Markdown specific
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
-" Python specific
-Plug 'psf/black', { 'branch': 'main', 'for': 'python' }
-Plug 'joonty/vdebug', { 'for': 'python' }
-
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -61,7 +53,6 @@ filetype plugin indent on  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=darkred guibg=#382424
 
 augroup whitespace " {
     autocmd!
@@ -81,15 +72,8 @@ endfunction
 " Run :FixWhitespace to remove end of line white space.
 command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
@@ -120,15 +104,9 @@ let mapleader = ","
 set pastetoggle=<leader>p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" phpunit
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:phpunit_cmd = "/usr/local/bin/phpunit"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gutentags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gutentags_ctags_extra_args = ["--options=/Users/mattbullock/.ctags"]
+let g:gutentags_ctags_extra_args = ["--options=".$HOME."/.ctags"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
@@ -149,23 +127,6 @@ let g:lightline.active = {
             \   'left': [ [ 'mode', 'paste' ], ['fugitive'], ['readonly', 'relativepath', 'modified'] ],
             \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vdebug
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vdebug_options = {}
-let g:vdebug_options["path_maps"] = { }
-let g:vdebug_options['timeout'] = 60
-let g:vdebug_options['break_on_open'] = 0
-
-au FileType php nnoremap <leader>e :VdebugEval<space>
-au FileType php nnoremap <leader>bw :BreakpointWindow<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PHPQA
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:phpqa_codesniffer_autorun = 0
-let g:phpqa_messdetector_autorun = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fugitive
@@ -254,29 +215,19 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" black
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufWritePre *.py execute ':Black'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'cpp': ['gcc'],
-\   'php': ['php'],
+\   'python': ['ruff', 'mypy']
 \}
-let g:ale_cpp_gcc_options = "-x c++ -std=c++14 -Wall -Werror -Wno-unused-result -Wno-conversion -Wno-c++11-extensions -Wno-mismatched-tags -Wno-pragma-once-outside-header"
+let g:ale_fixers = {
+\   '*': ['trim_whitespace', 'remove_trailing_lines']
+\   'python': ['ruff', 'ruff_format'],
+\}
+let g:ale_python_mypy_auto_pipenv = 1
+let g:ale_python_ruff_auto_pipenv = 1
+let g:ale_python_ruff_format_auto_pipenv = 1
 let g:ale_fix_on_save = 1
-
-let g:ale_python_auto_poetry = 1
-let g:ale_python_flake8_options = "--ignore E501"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnips
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<C-x>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Session handling
@@ -345,5 +296,3 @@ com! FormatJSON %!python -m json.tool
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
-
-au BufRead,BufNewFile *.mustache setfiletype python
